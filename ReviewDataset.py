@@ -1,5 +1,6 @@
 import pandas as pd
 from torch.utils.data import Dataset
+from .Vectorizer import ReviewVectorizer
 
 
 class ReviewDataset(Dataset):
@@ -50,7 +51,7 @@ class ReviewDataset(Dataset):
         :param split: --> str, one of "train", "val", "test"
         """
         self._target_split = split
-        self._target_split, self._target_size = self._lookup_dict[split]
+        self._target_df, self._target_size = self._look_dict[split]
 
     def __len__(self):
         return self._target_size
